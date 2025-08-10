@@ -131,7 +131,7 @@ def monitor_with_notifications():
             # Try to get results
             success, results = client.get_results(result.process_id)
             if success and results:
-                results_file = f"../data/results/process_{result.process_id}_results.json"
+                results_file = f"./results/process_{result.process_id}_results.json"
                 with open(results_file, 'w') as f:
                     json.dump(results, f, indent=2)
                 print(f"✓ Results saved to: {results_file}")

@@ -171,11 +171,11 @@ def main():
     if len(sys.argv) > 1:
         json_file = sys.argv[1]
     else:
-        json_file = '../data/results/process_45133_results.json'
+        json_file = './results/process_45133_results.json'
 
     # Generate output filename based on input
     base_name = os.path.basename(json_file).replace('.json', '')
-    output_file = f'../data/reports/{base_name}_report.txt'
+    output_file = f'../../reports/behavior_signals/{base_name}_report.txt'
 
     report_text = create_behavior_report(json_file, output_file)
     print(report_text)

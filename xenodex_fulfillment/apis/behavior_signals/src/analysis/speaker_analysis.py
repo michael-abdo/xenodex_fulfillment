@@ -313,8 +313,8 @@ def main():
     """Main function to process speaker analysis."""
     parser = argparse.ArgumentParser(description='Generate individual speaker analysis reports')
     parser.add_argument('json_file', help='Path to JSON file containing behavioral signals data')
-    parser.add_argument('--output-dir', default='../data/reports', 
-                       help='Output directory for reports (default: ../data/reports)')
+    parser.add_argument('--output-dir', default='../../reports/behavior_signals', 
+                       help='Output directory for reports (default: ../../reports/behavior_signals)')
     
     args = parser.parse_args()
     
