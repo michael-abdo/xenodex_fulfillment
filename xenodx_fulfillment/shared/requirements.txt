@@ -1,0 +1,21 @@
+# Shared dependencies for all API integrations
+
+# Core dependencies
+pyyaml>=6.0          # YAML configuration parsing
+aiohttp>=3.8         # Async HTTP client
+aiofiles>=0.8        # Async file operations
+python-dotenv>=0.19  # Environment variable management
+
+# Reporting
+jinja2>=3.0          # HTML template rendering
+
+# Testing
+pytest>=7.0          # Test framework
+pytest-asyncio>=0.18 # Async test support
+
+# Optional: Documentation scraping
+beautifulsoup4>=4.10  # HTML parsing (optional)
+html2text>=2020.1.16  # HTML to Markdown conversion (optional)
+
+# Optional: Media file analysis
+# mutagen>=1.45       # Audio metadata extraction (optional)

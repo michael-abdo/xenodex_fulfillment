@@ -1,0 +1,5 @@
+# Behavioral Signals API-specific dependencies
+# All common dependencies are in ../../shared/requirements.txt
+
+# Currently, Behavioral Signals API only needs the shared dependencies
+# No additional API-specific packages required
