@@ -200,7 +200,7 @@ class Pipeline:
             else:
                 self.update_job(job, status='error', error=f"No processed files found for video ID: {video_id}")
                 logger.error(f"No processed files found for video ID: {video_id}. Please run shared processing first.")
-                logger.error(f"  Run: python ../../../shared_processing/scripts/process_media.py \"{url}\"")
+                logger.error(f"  Run: python /home/Mike/projects/xenodex/xenodex_fulfillment/process_data/workflows/process_media.py \"{url}\"")
                 return job
             
             # Update job with found files

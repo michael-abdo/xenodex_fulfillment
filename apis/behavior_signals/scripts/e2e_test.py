@@ -90,7 +90,7 @@ def test_e2e_workflow(url: str, enable_chunking: bool = False, dry_run: bool = F
     print(f"🆔 Video ID: {video_id}")
     
     # Step 1: Run shared processing (using relative path)
-    shared_script = "../../../shared_processing/scripts/process_media.py"
+    shared_script = "/home/Mike/projects/xenodex/xenodex_fulfillment/process_data/workflows/process_media.py"
     cmd = ["python3", str(shared_script), url]
     
     if enable_chunking:
@@ -235,7 +235,7 @@ def main():
             print("   ⚠️  Note: Real API calls will consume credits and cost money")
     else:
         print("\n❌ Test failed - check the error messages above")
-        print("   • Ensure shared_processing is set up correctly")
+        print("   • Ensure xenodex_fulfillment processing is set up correctly")
         print("   • Verify API credentials are configured")
         print("   • Check network connectivity")
     

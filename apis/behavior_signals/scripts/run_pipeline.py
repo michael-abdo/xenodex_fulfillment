@@ -6,7 +6,7 @@ This script analyzes YouTube videos that have been processed by the shared proce
 
 New Workflow:
   1. First, run shared processing to create audio files:
-     python ../../../shared_processing/scripts/process_media.py "YOUTUBE_URL"
+     python /home/Mike/projects/xenodex/xenodex_fulfillment/process_data/workflows/process_media.py "YOUTUBE_URL"
   
   2. Then run this script to analyze the processed files:
      python scripts/run_pipeline.py "YOUTUBE_URL"
@@ -74,7 +74,7 @@ def run_shared_processing(url: str, enable_chunking: bool = False) -> bool:
     print("-" * 50)
     
     # Build command
-    shared_script = Path(__file__).parent.parent.parent.parent / "shared_processing" / "scripts" / "process_media.py"
+    shared_script = Path("/home/Mike/projects/xenodex/xenodex_fulfillment/process_data/workflows/process_media.py")
     cmd = ["python3", str(shared_script), url]
     
     if enable_chunking:
@@ -121,7 +121,7 @@ def check_available_files(pipeline: Pipeline, url: str):
     if total_files == 0:
         print("❌ No processed files found")
         print(f"💡 Run shared processing first:")
-        print(f"   python ../../../shared_processing/scripts/process_media.py \"{url}\"")
+        print(f"   python /home/Mike/projects/xenodex/xenodex_fulfillment/process_data/workflows/process_media.py \"{url}\"")
         return
     
     if shared_files['converted']:
@@ -171,7 +171,7 @@ def process_single_url(
     if total_files == 0:
         print(f"❌ No processed files found for video ID: {video_id}")
         print(f"💡 Run shared processing first:")
-        print(f"   python ../../../shared_processing/scripts/process_media.py \"{url}\"")
+        print(f"   python /home/Mike/projects/xenodex/xenodex_fulfillment/process_data/workflows/process_media.py \"{url}\"")
         print(f"   Or use --auto-process flag to run it automatically")
         return False
     

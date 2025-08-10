@@ -71,7 +71,7 @@ class StreamProcessor:
         # No chunks found - suggest creating them via shared processing
         logger.warning(f"No chunks found for video {video_id}")
         logger.info(f"💡 Create chunks first using shared processing:")
-        logger.info(f"   python ../../../shared_processing/scripts/process_media.py \"https://youtube.com/watch?v={video_id}\" --chunk --chunk-duration {chunk_duration}")
+        logger.info(f"   python /Users/Mike/xenodex_fulfillment/process_data/workflows/process_media.py \"https://youtube.com/watch?v={video_id}\" --chunk --chunk-duration {chunk_duration}")
         return []
     
     def process_chunk_async(self, chunk_path: str, chunk_id: int):
