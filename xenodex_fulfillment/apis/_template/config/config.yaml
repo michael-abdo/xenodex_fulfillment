@@ -1,0 +1,53 @@
+# YourAPI Configuration Template
+# Replace placeholders with your API-specific values
+
+# API credentials and endpoints
+api:
+  key: "${YOUR_API_KEY}"  # Use environment variables in production
+  client_id: "${YOUR_API_CLIENT_ID}"
+  base_url: "https://api.yourservice.com"
+  version: "v1"
+  
+# API-specific timeouts (in seconds)
+timeouts:
+  api_submission: 120       # Time to wait for submission response
+  api_check_interval: 5     # Interval between status checks
+  max_wait: 600            # Maximum time to wait for completion
+  connection_timeout: 30    # Connection timeout
+  read_timeout: 60         # Read timeout
+  
+# Path configuration
+paths:
+  # Shared data directory paths (absolute paths to shared data)
+  shared_converted: "/home/Mike/projects/xenodex/xenodex_fulfillment/data/converted"
+  shared_samples: "/home/Mike/projects/xenodex/xenodex_fulfillment/data/samples"
+  shared_chunks: "/home/Mike/projects/xenodex/xenodex_fulfillment/data/chunks"
+  
+  # API-specific paths (relative to API directory)
+  results: "./results"                    # Store results within API directory
+  reports: "../../reports/your_api_name"  # Reports at top level for easy access
+  jobs: "../../data/jobs"                # Shared job tracking
+  
+# Processing configuration
+processing:
+  supported_formats: ["mp3", "wav", "m4a"]
+  max_file_size: 10485760  # 10MB in bytes
+  default_sample_rate: 16000
+  chunk_duration: 120      # Duration in seconds for chunking
+  min_chunk_duration: 30   # Minimum chunk size
+  
+# Feature flags
+features:
+  enable_chunking: true
+  enable_batch_processing: true
+  enable_retry: true
+  enable_caching: true
+  max_retries: 3
+  
+# API-specific settings
+# Add your API-specific configuration here
+settings:
+  # Example settings:
+  # language: "en"
+  # model_version: "latest"
+  # output_format: "json"
