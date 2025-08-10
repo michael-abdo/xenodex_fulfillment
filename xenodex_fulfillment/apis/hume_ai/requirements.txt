@@ -1,0 +1,11 @@
+# YourAPI specific requirements
+# Add any API-specific dependencies here
+
+# Common dependencies (usually already installed)
+requests>=2.31.0
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Add your API-specific requirements below:
+# example-sdk>=1.0.0
+# special-audio-lib>=2.0.0
