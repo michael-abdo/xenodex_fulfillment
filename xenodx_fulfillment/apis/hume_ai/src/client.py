@@ -56,8 +56,6 @@ class HumeAIClient(APIClient):
     async def _submit_file(self, file_path: Path) -> str:
         """Submit file and return job ID"""
         url = f"{self.base_url}/batch/jobs"
-        print(f"DEBUG: Submitting to URL: {url}")
-        print(f"DEBUG: API Key (first 10 chars): {self.api_key[:10]}...")
         
         async with aiohttp.ClientSession() as session:
             # Create form data
