@@ -273,7 +273,11 @@ def main():
         
         # Create client and analyzer instances
         client = client_class(config.to_dict())
-        analyzer = analyzer_class(config.to_dict())
+        # Some analyzers don't require config in initialization
+        try:
+            analyzer = analyzer_class(config.to_dict())
+        except TypeError:
+            analyzer = analyzer_class()
         
         # Create pipeline
         pipeline = Pipeline(client=client, analyzer=analyzer, config=config)
@@ -282,15 +286,15 @@ def main():
             print("Pipeline created successfully")
             print(f"Starting analysis of {args.file_path}...")
         
-        # Run the analysis
-        result = pipeline.process_audio(args.file_path)
+        # Run the analysis asynchronously
+        result = asyncio.run(pipeline.process_file(args.file_path))
         
         if args.verbose:
             print("Analysis completed successfully")
         
         # Generate report
         from xenodx_fulfillment.shared.reports import ReportGenerator
-        report_generator = ReportGenerator(config)
+        report_generator = ReportGenerator()
         
         if args.output_format == 'json':
             output = report_generator.generate_report(result, format='json')

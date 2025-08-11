@@ -14,8 +14,8 @@ APIS: Dict[str, Dict[str, Any]] = {
     'hume_ai': {
         'client_class': 'HumeAIClient',
         'analyzer_class': 'HumeAIAnalyzer',
-        'import_path': 'xenodx_fulfillment.apis.hume_ai',
-        'config_path': '/home/Mike/projects/xenodx/xenodx_fulfillment/apis/hume_ai/config/config.yaml',
+        'import_path': 'xenodx_fulfillment.apis.hume_ai.src',
+        'config_path': '/home/Mike/projects/xenodex/xenodx_fulfillment/apis/hume_ai/config/config.yaml',
         'description': 'Hume AI emotion analysis API'
     }
 }

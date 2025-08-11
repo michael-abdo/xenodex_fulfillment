@@ -4,6 +4,7 @@ import aiohttp
 from pathlib import Path
 from typing import Dict, Any
 import os
+import json
 
 # Import shared services protocol
 import sys
@@ -19,7 +20,10 @@ class HumeAIClient(APIClient):
         # Extract API configuration
         api_config = config.get('api', {})
         self.api_key = api_config.get('key', os.environ.get('HUME_API_KEY', ''))
-        self.base_url = api_config.get('base_url', 'https://api.hume.ai/v0')
+        self.base_url = api_config.get('base_url', 'https://api.hume.ai')
+        version = api_config.get('version', 'v0')
+        if version and not self.base_url.endswith(version):
+            self.base_url = f"{self.base_url}/{version}"
         
         # Extract timeout configuration
         timeouts = config.get('timeouts', {})
@@ -52,12 +56,16 @@ class HumeAIClient(APIClient):
     async def _submit_file(self, file_path: Path) -> str:
         """Submit file and return job ID"""
         url = f"{self.base_url}/batch/jobs"
+        print(f"DEBUG: Submitting to URL: {url}")
+        print(f"DEBUG: API Key (first 10 chars): {self.api_key[:10]}...")
         
         async with aiohttp.ClientSession() as session:
             # Create form data
             data = aiohttp.FormData()
+            with open(file_path, 'rb') as f:
+                file_data = f.read()
             data.add_field('file',
-                          open(file_path, 'rb'),
+                          file_data,
                           filename=file_path.name,
                           content_type='audio/mpeg')
             
@@ -66,7 +74,7 @@ class HumeAIClient(APIClient):
                 "language": {"granularity": "utterance"},
                 "prosody": {"granularity": "utterance"}
             }
-            data.add_field('json', str(config))
+            data.add_field('json', json.dumps(config))
             
             headers = {'X-Hume-Api-Key': self.api_key}
             
